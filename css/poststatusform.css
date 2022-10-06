@@ -1,0 +1,159 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: url(../image/register_back.jpg) no-repeat;
+	background-size: 100% 100%;
+	background-attachment:fixed;
+}
+.post-form{
+	width: 900px;
+	height: 550px;
+	border-radius: 10px;
+	/*transform: translate(34%,12%);*/
+	margin: auto;
+	margin-top: 1%;
+	background: #FFFFFF;
+	box-shadow: 0px 0px 8px 0px #afcacb;
+}
+.table-left{
+	width: 50%;
+	height: 100%;
+	background-color: #0099FF;
+	background-image: url(../image/table_left.png);
+	border-radius: 10px 0 0 10px;
+	float: left;
+}
+.table-right{
+	width: 50%;
+	height: 80%;
+	float: right;
+}
+.table-seg{
+	width: 95%;
+	height: 1px;
+	margin-left: 2.5%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #cecece;
+}
+.fa-user-circle{
+	color: #0099FF;
+
+}
+.table-right h2{
+	color: #0099FF;
+	line-height:2em;
+}
+
+a{
+	text-decoration: none;
+	color: #3CB0FE;
+}
+a{
+	text-decoration: none;
+	color: #3CB0FE;
+}
+a:hover{
+	color: #0089FF;
+	transition: .4s;
+}
+.right-login{
+	margin-left: 55%;
+}
+.title{
+	margin-top: 25px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	display:flex;
+}
+.table-input{
+	width: 90%;
+	margin-left: 2%;
+}
+.inline{
+	margin-left: 28px;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	height:40px;
+	margin-top:5%;
+}
+.inline input{
+	inline-height:40px;
+}
+.table-input .text{
+	width: 60%;
+	height: 40px;
+	border-radius: 7px;
+	border-style: none;
+	background-color: #f7f7f7;
+	padding-left:1em;
+
+}
+.date input{
+	line-height:40px;
+	width: 54%;
+	border-radius: 7px;
+	color:#666;
+	padding:0 1em;
+	background-color: #f7f7f7;
+	border-style: none;
+}
+
+.code{
+	width: 375px;
+	height: 40px;
+	margin:20px 30px;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+.code .input-val{
+	border-radius: 5px;
+	margin-left:15px;
+	width:60%;
+}
+#canvas{
+	width:130px;
+	height:35px;
+	box-sizing: border-box;
+	border: 1px solid #a5a5a5;
+	cursor: pointer;
+
+}
+.btn{
+	text-align: center;
+	line-height: 35px;
+	width: 100px;
+	height: 40px;
+	border-style: none;
+	background-color: #0099FF;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.btn:hover{
+	background-color: #27beff;
+	transition: .4s;
+}
+.button{
+	display:flex;
+	justify-content:space-around;
+
+}
+#searchanother{
+	width:300px;
+}
+.search{
+	display:flex;
+	justify-content:space-between;
+}
+.searchtext{
+	flex:70;
+	width:300px;
+}
+.word{
+	flex:30;
+}

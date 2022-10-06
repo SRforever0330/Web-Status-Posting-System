@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/about.css">
+		<link rel="stylesheet" href="style/font-awesome/css/font-awesome.css">
+		<script type="text/javascript" src="style/js/jquery-3.5.1.js"></script>
+		<title>search status form</title>
+		<script type="text/jscript">
+			//
+				$(function(){
+
+					$(".item").each(function(){
+						$(this).children(".item-content").hide();
+					});
+
+
+					$(".question").each(function(){
+
+						$(this).click(function(){
+
+
+							var navEle = $(this).parents(".item").children(".item-content");
+
+							if(navEle.css("display") != "none"){
+
+								navEle.slideUp(500);
+							}else{
+
+								var navMenu = navEle.parents(".item");
+
+								var otherNavs = navMenu.siblings();
+
+								otherNavs.each(function(){
+									$(this).children(".item-content").slideUp(500);
+								});
+
+								navEle.slideDown(500);
+							}
+						});
+					});
+				});
+		</script>
+	</head>
+	<body>
+		<form class="post-form" method="get" action ="poststatusprocess.php">
+			<div class="table-left"></div>
+			<div class="table-right">
+				<div class="title">
+					<i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+					<h2>&nbsp;About this assignment</h2>
+				</div>
+				<div class="right-login">
+					Return to<a href="index.html">&nbsp;Home Page</a>
+				</div>
+				<div class="table-seg"></div>
+
+				<div class="table-input" >
+					<div class="content-left" id="content-left">
+						<div class="nav">
+						<!-- every item -->
+						<div class="item">
+							<!-- question -->
+							<div class="question">What special features have you done or attempted in creating the website?</div>
+								<!-- answer -->
+								<div class="item-content">
+									<div class="answer">This is a report webpage for presenting what you have done based on the question provided.
+Step 1. List your answers in bullet point for each question. For readability, include the questions as
+well.
+ What special features have you done or attempted in creating the website?
+ Which part(s) did you have trouble with?
+ What would you like to do better next time?
+ What you have learnt along the way? Did you use any references or resources during this
+</div>
+								</div>
+							</div>
+						<div class="seg"></div>
+						<div class="item">
+							<!-- question-->
+							<div class="question">Which part(s) did you have trouble with?</div>
+							<!-- answer -->
+							<div class="item-content">
+								<div class="answer">This is a report webpage for presenting what you have done based on the question provided. Step 1. List your answers in bullet point for each question. For readability, include the questions as well.  What special features have you done or attempted in creating the website?  Which part(s) did you have trouble with?  What would you like to do better next time?  What you have learnt along the way? Did you use any references or resources during this</div>
+							</div>
+						</div>
+						<div class="seg"></div>
+						<div class="item">
+							<!-- question -->
+							<div class="question">What would you like to do better next time?</div>
+							<!-- answer -->
+							<div class="item-content">
+								<div class="answer">This is a report webpage for presenting what you have done based on the question provided. Step 1. List your answers in bullet point for each question. For readability, include the questions as well.  What special features have you done or attempted in creating the website?  Which part(s) did you have trouble with?  What would you like to do better next time?  What you have learnt along the way? Did you use any references or resources during this</div>
+							</div>
+						</div>
+						<div class="seg"></div>
+						<div class="item">
+							<!-- question -->
+							<div class="question">What you have learnt along the way? Did you use any references or resources during this
+project? If so, please include the sources.</div>
+							<!-- answer -->
+							<div class="item-content">
+								<div class="answer">This is a report webpage for presenting what you have done based on the question provided. Step 1. List your answers in bullet point for each question. For readability, include the questions as well.  What special features have you done or attempted in creating the website?  Which part(s) did you have trouble with?  What would you like to do better next time?  What you have learnt along the way? Did you use any references or resources during this</div>
+							</div>
+						</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</body>
+</html>

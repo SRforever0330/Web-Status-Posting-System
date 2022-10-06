@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" lang="en">
+		<title>post status form</title>
+		<link rel="stylesheet" href="css/poststatusform.css">
+		<link rel="stylesheet" href="style/font-awesome/css/font-awesome.css">
+		<script type="text/javascript" src="style/js/jquery-3.5.1.js"></script>
+		<script type="text/jscript">
+// 			window.onload=function() {
+// 		        //get the date
+// 			    var now= new Date();
+// 		    	var day=("0"+now.getDate()).slice(-2);
+// 		    	var month=("0"+(now.getMonth()+1)).slice(-2);
+// 		    	var year=now.getFullYear();
+// 		    	var today=day+"/"+month+"/"+year;
+// 		    	var today=year+"/"+month+"/"+day;
+// 				$("#date").val(today);
+// 			};
+			//ready()
+				var show_num = [];
+			   $(function(){
+			        draw(show_num);
+			        $("#canvas").on('click',function(){
+			            draw(show_num);
+			        })
+			   });
+			    function getDate(){
+			    	//get the date
+				    var now= new Date();
+			    	var day=("0"+now.getDate()).slice(-2);
+			    	var month=("0"+(now.getMonth()+1)).slice(-2);
+			    	var year=now.getFullYear();
+			    	var today=day+"/"+month+"/"+year;
+			    	var today=year+"/"+month+"/"+day;
+					$("#date").attr("value",today);
+					alert($("#date").attr("value"))
+					return today;
+			    };
+
+				function toValid(){
+				//Generate and render a captcha
+			            var val = $(".input-val").val().toLowerCase();
+			            var num = show_num.join("");
+			            if(val==''){
+			                alert('Please input the CAPTCHA');
+			                return false;
+			            }else if(val == num){
+			                alert('Post successfully!');
+			                $(".input-val").val('');
+			                return true;
+
+			            }else{
+			                alert('The wrong CAPTCHA, please input again!');
+			                $(".input-val").val('');
+			                return false;
+			            }
+			    };
+
+			    //Generate and render a captcha graph
+			    function draw(show_num) {
+			        var canvas_width=$('#canvas').width();
+			        var canvas_height=$('#canvas').height();
+			        var canvas = document.getElementById("canvas");   //Get the canvas object:actor
+			        var context = canvas.getContext("2d");   //Get the canvas drawing environment and the stage for actors to perform
+			        canvas.width = canvas_width;
+			        canvas.height = canvas_height;
+			        var sCode = "a,b,c,d,e,f,g,h,i,j,k,m,n,p,q,r,s,t,u,v,w,x,y,z,A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
+			        var aCode = sCode.split(",");
+			        var aLength = aCode.length;   //Gets the length of the array
+
+			        for (var i = 0; i < 4; i++) {  //The for loop controls the number of captchas (if you want to display 6 digits, change 4 to 6
+			            var j = Math.floor(Math.random() * aLength);  //Get a random index value
+			            var deg = Math.random() - 0.5; //Produce a random radian
+			            var txt = aCode[j];//Get a random piece of content
+			            show_num[i] = txt.toLowerCase();
+			            var x = 10 + i * 20;//x position
+			            var y = 20 + Math.random() * 8;//y position
+			            context.font = "bold 23px verdana";
+
+			            context.translate(x, y);
+			            context.rotate(deg);
+
+			            context.fillStyle = randomColor();
+			            context.fillText(txt, 0, 0);
+
+			            context.rotate(-deg);
+			            context.translate(-x, -y);
+			        }
+			        for (var i = 0; i <= 5; i++) { //Lines are displayed on the verification code
+			            context.strokeStyle = randomColor();
+			            context.beginPath();
+			            context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+			            context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+			            context.stroke();
+			        }
+			        for (var i = 0; i <= 30; i++) { //Small dots are displayed on the verification code
+			            context.strokeStyle = randomColor();
+			            context.beginPath();
+			            var x = Math.random() * canvas_width;
+			            var y = Math.random() * canvas_height;
+			            context.moveTo(x, y);
+			            context.lineTo(x + 1, y + 1);
+			            context.stroke();
+			        }
+			    }
+
+			    //Get a random color value
+			    function randomColor() {
+			        var r = Math.floor(Math.random() * 256);
+			        var g = Math.floor(Math.random() * 256);
+			        var b = Math.floor(Math.random() * 256);
+			        return "rgb(" + r + "," + g + "," + b + ")";
+			    }
+
+		</script>
+	</head>
+	<body>
+		<form class="post-form" method="post" action ="poststatusprocess.php" Onsubmit="return toValid()">
+			<div class="table-left"></div>
+			<div class="table-right">
+				<div class="title">
+					<i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+					<h2>&nbsp;Status Posting System</h2>
+				</div>
+				<div class="right-login">
+					Return to<a href="index.html">&nbsp;Home Page</a>
+				</div>
+				<div class="table-seg"></div>
+
+				<div class="table-input">
+					<div class="inline"><b>Status Code*:</b>
+						<input type="text" placeholder="Status Code:" name="statuscode" required="required" class="text">
+					</div>
+
+					<div class="inline"><b>Status*:</b>
+					<input type="text" placeholder="Status:" name="status" required="required" class="text">
+					</div>
+
+					<div class="inline"><b>Share:</b>
+						<label for="Public">&nbsp;&nbsp;Public</label>
+						<input type="radio" checked="checked" name="share" value="public" id="Public"/>
+						<label for="Friends">&nbsp;&nbsp;Friends</label>
+						<input type="radio" name="share" value="Friends" id="Friends"/>
+						<label for="Only Me">&nbsp;&nbsp;Only Me</label>
+						<input type="radio" name="share" value="Only Me" id="Only Me"/>
+					</div>
+
+					<div class="inline date" name="date" ><b>Date*:</b>&nbsp;&nbsp;&nbsp;
+						<input type="date" id="date" value="getDate()">
+					</div>
+
+					<div class="inline checkbox" name="permission" ><b>Permission:</b>&nbsp;&nbsp;&nbsp;
+						<label for="Like">&nbsp;&nbsp;Like</label>
+						<input type="checkbox" name="permission" value="Like" id="Like"/>
+						<label for="Comments">&nbsp;&nbsp;Comments</label>
+						<input type="checkbox" name="permission" value="Comments" id="Comments"/>
+						<label for="Share">&nbsp;&nbsp;Share</label>
+						<input type="checkbox" name="permission" value="Share" id="Share"/>
+					</div>
+
+					<div class="code">
+						<canvas id="canvas" ></canvas>
+						<input type="text" placeholder="Please input captcha:" class="input-val text">
+					</div>
+
+					<div class='button'>
+						<input type="submit" class="btn" id='submit' value="Post"></input>
+						<input type="reset" class="btn" value="Reset"></input>
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</body>
+</html>
